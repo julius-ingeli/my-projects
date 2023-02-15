@@ -1,0 +1,29 @@
+#include<stdio.h>
+
+int main(int argc, char *argv[]){
+    
+    if(argc == 2){
+	printf("received argument %s\n",argv[1];
+	}
+    else {
+	printf("Expecting another argument here\n");
+}
+    int n = argv[1];//pocet iteracii
+    float citatel = 1;
+    float menovatel = 1;
+    float sucet = 0;
+    float vysledok;
+    while(sucet<=n){
+        vysledok = citatel/menovatel;
+        //printf("Delim: 1/%f\n",menovatel);
+        //printf("Vysledok:%f\n",vysledok);
+        sucet+=vysledok;
+        //printf("Sucet:%f\n",sucet);
+        menovatel++;
+        //printf("------------------------------\n");
+
+
+    }
+    printf("Menovatel: %f\nVysledok: %f\n",menovatel-1,vysledok);
+    return 0;
+    }
