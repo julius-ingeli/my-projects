@@ -3,7 +3,7 @@
 using namespace std;
 
 
-int main(int argc, char *argv[0]){
+int main(int argc, char **argv){
     int numargument;
     if (argc == 2){
         char *argument = argv[1];
@@ -18,6 +18,7 @@ int main(int argc, char *argv[0]){
         }
     else{
         cout<<"No arguments."<<endl;
+        exit(0);
         }
     int n = numargument;
     double citatel = 1;

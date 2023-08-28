@@ -297,15 +297,44 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         Random random = new Random();
-        //printerApp();
-        //comparerApp();
-        //rng(550, 0, 6, random);
-        //calculator();
-        //lucky7(random);
-        //ageApp(args);
-        nameHangman(random);
-
-       
+        Scanner choice = new Scanner(System.in);
+        out.printf("Select which app to use:\n1. Printer app\n2. Comparer App\n3. RNG\n4. Calculator\n5. Lucky 7\n6. Age app\n7. Name hangman\n");
+        while(true){
+            int c = choice.nextInt();
+            switch(c){
+                case 1:
+                    printerApp();
+                    choice.close();
+                    System.exit(0);
+                case 2:
+                    comparerApp();
+                    choice.close();
+                    System.exit(0);
+                case 3:
+                    rng(550, 0, 6, random);
+                    choice.close();
+                    System.exit(0);
+                case 4:
+                    calculator();
+                    choice.close();
+                    System.exit(0);
+                case 5:
+                    lucky7(random);
+                    choice.close();
+                    System.exit(0);
+                case 6:
+                    ageApp(args);
+                    choice.close();
+                    System.exit(0);
+                case 7:
+                    nameHangman(random);
+                    choice.close();
+                    System.exit(0);
+                default:
+                    out.printf("Choice %d is invalid, try again\n.", c);
+            }
+        }
+        
     }
     
 }
