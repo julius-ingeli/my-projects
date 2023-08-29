@@ -295,10 +295,65 @@ public class App {
         obj.close();
     }
 
+    public static void furnitureApp() throws Exception{
+        String [] furniture = {"Table","Chair","Shelf","Sofa"};
+        out.println("---First print---");
+        for(int i = 0; i< furniture.length; i++){
+            out.println(furniture[i]);
+        }
+        out.println("---Second print---");
+        for(int i = 0;i<2;i++){
+            out.println(furniture[i]);
+        }
+        out.println("---Third print---");
+        for(int i = 0;i<furniture.length;i++){
+            if(furniture[i].compareTo("Sofa")==0){
+                out.println(furniture[i]);
+            }
+        }
+    }
+    public static void diceThrow(Random random)throws Exception{
+        int [] thrownNumbers = new int[5];
+        for(int i=0;i<thrownNumbers.length;i++){
+            thrownNumbers[i] = random.nextInt(6)+1;
+        }
+        out.printf("Random numbers:");
+        for(int i = 0; i<thrownNumbers.length;i++){
+            out.printf(" %d ",thrownNumbers[i]);
+        }
+        int sum = 0;
+        out.printf("\n");
+        for(int i =0;i<thrownNumbers.length;i++){
+            sum+=thrownNumbers[i];
+        }
+        out.printf("Sum of the random numbers: %d",sum);
+    }
+
+    public static void diceThrow2(Random random)throws Exception{
+        int [] thrownNumbers = new int[5];
+        for(int i=0;i<thrownNumbers.length;i++){
+            int randN = random.nextInt(20)+1;
+            boolean match = false;
+            for(int j=0;j<thrownNumbers.length;j++){
+                if(thrownNumbers[j]==randN){
+                    match = true;
+                    i--;
+                    break;
+                }
+            }
+            if(match == false){
+                thrownNumbers[i] = randN;
+            }
+        }
+        for(int i = 0;i<thrownNumbers.length;i++){
+            out.printf(" %d ",thrownNumbers[i]);
+        }
+        out.printf("\n");
+    }
     public static void main(String[] args) throws Exception {
         Random random = new Random();
         Scanner choice = new Scanner(System.in);
-        out.printf("Select which app to use:\n1. Printer app\n2. Comparer App\n3. RNG\n4. Calculator\n5. Lucky 7\n6. Age app\n7. Name hangman\n");
+        out.printf("Select which app to use:\n1. Printer app\n2. Comparer App\n3. RNG\n4. Calculator\n5. Lucky 7\n6. Age app\n7. Name hangman\n8. Furniture app\n9. Dice thrower\n10. Dice thrower 2\n");
         while(true){
             int c = choice.nextInt();
             switch(c){
@@ -330,6 +385,22 @@ public class App {
                     nameHangman(random);
                     choice.close();
                     System.exit(0);
+                case 8:
+                    furnitureApp();
+                    choice.close();
+                    System.exit(0);
+                case 9:
+                    diceThrow(random);
+                    choice.close();
+                    System.exit(0);
+                case 10:
+                    int dbg = 500;
+                    while(dbg>0){
+                    diceThrow2(random);
+                    dbg--;
+                    }
+                    choice.close();
+                    System.exit(0);
                 default:
                     out.printf("Choice %d is invalid, try again\n.", c);
             }
@@ -348,6 +419,7 @@ public class AskName{
         System.out.println(s);
     }
     public static void main(String[]args){
+        Scanner obj = new Scanner(System.in);
 
     }
 }
