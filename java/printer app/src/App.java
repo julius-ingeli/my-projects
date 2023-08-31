@@ -1,8 +1,15 @@
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+
 import static java.lang.System.out;
 import java.lang.Character;
 
 public class App {
+
+    static void print(String s){
+        System.out.println(s);
+    }
+
     public static void printerApp() throws Exception{
         String creator = "Julius Ingeli";
         System.out.println("Printer app");
@@ -350,10 +357,58 @@ public class App {
         }
         out.printf("\n");
     }
+
+
+    public static void memGame(Random random) throws Exception{
+        print("Try to remember the following numbers:");
+        int[] arr = new int [5];
+        for(int i = 0;i<5;i++){
+            arr[i] = random.nextInt(5)+1;
+        }
+
+        for(int i = 0;i<5;i++){
+            out.printf("%d ", arr[i]);
+        }
+        out.printf("\n ");
+
+        TimeUnit.SECONDS.sleep(4); //sleep
+
+        try {                              //cls or clear
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        int [] inarr = new int [5];
+        Scanner obj = new Scanner(System.in);
+        for(int i = 0; i<5;i++){
+            out.printf("Type number %d\n", i+1);
+            int in = obj.nextInt();
+            inarr[i] = in;
+        }
+        print("Your numbers were:");
+        for(int i = 0;i<5;i++){
+            out.printf("%d ", inarr[i]);
+        }
+        out.printf("\n");
+        print("The given numbers were:");
+        for(int i = 0;i<5;i++){
+            out.printf("%d ", arr[i]);
+        }
+        out.printf("\n");
+        int rights = 0;
+        for(int i =0; i<5;i++){
+            if(inarr[i]==arr[i]){
+                rights++;
+            }
+        }
+        out.printf("You were correct %d times.\n", rights);
+        obj.close();
+    }
     public static void main(String[] args) throws Exception {
         Random random = new Random();
         Scanner choice = new Scanner(System.in);
-        out.printf("Select which app to use:\n1. Printer app\n2. Comparer App\n3. RNG\n4. Calculator\n5. Lucky 7\n6. Age app\n7. Name hangman\n8. Furniture app\n9. Dice thrower\n10. Dice thrower 2\n");
+        out.printf("Select which app to use:\n1. Printer app\n2. Comparer App\n3. RNG\n4. Calculator\n5. Lucky 7\n6. Age app\n7. Name hangman\n8. Furniture app\n9. Dice thrower\n10. Dice thrower 2\n11. Memory game\n");
         while(true){
             int c = choice.nextInt();
             switch(c){
@@ -399,6 +454,10 @@ public class App {
                     diceThrow2(random);
                     dbg--;
                     }
+                    choice.close();
+                    System.exit(0);
+                case 11:
+                    memGame(random);
                     choice.close();
                     System.exit(0);
                 default:
