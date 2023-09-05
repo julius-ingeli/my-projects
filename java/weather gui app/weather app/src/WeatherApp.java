@@ -61,8 +61,10 @@ public class WeatherApp extends JFrame {
                     response.append(inputLine);
                 }
                 in.close();
-
                 resultArea.setText(response.toString());
+                System.out.println(response.toString());
+                
+
             } else {
                 resultArea.setText("Error fetching weather data");
             }

@@ -1,6 +1,5 @@
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-
 import static java.lang.System.out;
 import java.lang.Character;
 
@@ -9,6 +8,7 @@ public class App {
     static void print(String s){
         System.out.println(s);
     }
+
 
     public static void printerApp() throws Exception{
         String creator = "Julius Ingeli";
@@ -405,10 +405,86 @@ public class App {
         out.printf("You were correct %d times.\n", rights);
         obj.close();
     }
+
+    public static void arrTest(Random random) throws Exception{
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        for(int i = 0; i<10; i++){
+            arr.add(random.nextInt(10)+2);
+        }
+
+        arr.remove(4);
+
+        for(int i = 0; i<10;i++){
+            out.printf("%d ", arr.get(i));
+        }
+
+    }
+    public static void arrDemo() throws Exception{
+        Scanner obj = new Scanner(System.in); //scanner obj - input
+        int rows; //number of rows
+        char ch = '*'; //character to fill the string
+        print("How many rows?"); 
+        rows = obj.nextInt(); // input rows
+        String s = new String(new char[rows]).replace('\0',' ');
+        StringBuilder sb = new StringBuilder(s);
+        for(int i = rows-1; i>-1;i--){
+             sb.setCharAt(i,ch);
+             TimeUnit.SECONDS.sleep(3);
+             out.println(sb);
+        }
+        obj.close();
+    }
+ 
+    public static void printDemo()throws Exception{
+        int n = 69;
+        double pi = 3.1415926;
+        System.out.println("println Hello");
+        System.out.print("print Hello\n");
+        System.out.print("print Hello\n");
+        System.out.println("(println):The value is " + n);
+        System.out.printf("(printf) The value is %d and the pi value is %f", n, pi);
+
+    }
+    static void printStuff(){
+        print("********************");
+        print("* Method Exercises *");
+        print("********************");
+    }
+    static int areacalc(int w, int h){
+        return w*h;
+    }
+
+    static ArrayList<String> sortStr(ArrayList<String>s){
+        Collections.sort(s);
+        return s;
+    }
+
+    static void multiply1000(int n){System.out.printf("%d",n*1000);}
+    
+    static void calculate(int n1, int n2, String s){
+        switch (s){
+            case "sum":
+                System.out.printf("The result is %d.",n1+n2);
+                break;
+            case "subtraction ":
+                System.out.printf("The result is %d.",n1-n2);
+                break;
+            case "multiplication":
+                System.out.printf("The result is %d.",n1*n2);
+                break;
+            default:
+                System.out.printf("Wrong choice.",n1+n2);
+                break;
+                
+        }
+    }
+        
+    
     public static void main(String[] args) throws Exception {
         Random random = new Random();
         Scanner choice = new Scanner(System.in);
-        out.printf("Select which app to use:\n1. Printer app\n2. Comparer App\n3. RNG\n4. Calculator\n5. Lucky 7\n6. Age app\n7. Name hangman\n8. Furniture app\n9. Dice thrower\n10. Dice thrower 2\n11. Memory game\n");
+        print("Select which app to use:\n1. Printer app\n2. Comparer App\n3. RNG\n4. Calculator\n5. Lucky 7\n6. Age app\n7. Name hangman\n8. Furniture app\n9. Dice thrower\n");
+        print("10. Dice thrower 2\n11. Memory game\n12. Multiplication\n13. print\n14. area\n");
         while(true){
             int c = choice.nextInt();
             switch(c){
@@ -460,6 +536,72 @@ public class App {
                     memGame(random);
                     choice.close();
                     System.exit(0);
+                case 12:
+                    print("Input number for multiplication:");
+                    Scanner n = new Scanner(System.in);
+                    int in = n.nextInt();                    
+                    multiply1000(in);
+                    n.close();
+                    choice.close();
+                    System.exit(0);
+                case 13:
+                    printStuff();
+                    choice.close();
+                    System.exit(0);
+                case 14:
+                    Scanner obj = new Scanner(System.in);
+                    print("Input width:");
+                    int w = obj.nextInt();
+                    print("Input height");
+                    int h = obj.nextInt();
+                    int a = areacalc(w, h);
+                    if(a>50){
+                        System.out.printf("Area is %d. Huge area.\n",a);
+                    }
+                    else{
+                        System.out.printf("Area is %d. Standard area.\n",a);
+                    }
+                    choice.close();
+                    System.exit(0);
+                case 15:
+                    Scanner inp = new Scanner(System.in);
+                    print("Word count:");
+                    int wc = inp.nextInt();
+                    inp.nextLine();//consuming the \n enter
+                    ArrayList<String> wordList = new ArrayList<String>();
+                    for(int i = 0; i<wc;i++){
+                        out.printf("Input word:");
+                        String word = inp.nextLine();
+                        wordList.add(word);
+                    }
+                    sortStr(wordList);
+                    print("Sorted list:");
+                    for(int i = 0; i<wordList.size();i++){
+                        print(wordList.get(i));
+                    }
+                    choice.close();
+                    inp.close();
+                    System.exit(0);
+                case 16:
+                    calculate(1, 2, "sum");
+                    choice.close();                    
+                    System.exit(0);
+                /*
+                case 13:
+                    printDemo();
+                    choice.close();
+                    System.exit(0);
+                case 14:
+                    arrDemo();
+                    choice.close();
+                    System.exit(0);
+                */
+                case 17:
+                    arrTest(random);
+                    choice.close();
+                    System.exit(0);
+                
+                
                 default:
                     out.printf("Choice %d is invalid, try again\n.", c);
             }
@@ -482,4 +624,12 @@ public class AskName{
 
     }
 }
+
+
+    static void printNumbers(){
+        for(int i =10;i<41;i++){
+            System.out.println(i);
+        }
+    }
+
  */
