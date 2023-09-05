@@ -20,8 +20,6 @@ public class WeatherApp extends JFrame {
     private JButton fetchButton;
     private JTextArea resultArea;
 
-
-
     private static final String API_KEY = "3b1de8a725cff7cd6f27c6f97b302b46"; // Replace with your actual API key
     private static final String API_URL = "http://api.openweathermap.org/data/2.5/weather";
 
@@ -69,7 +67,7 @@ public class WeatherApp extends JFrame {
                     response.append(inputLine);
                 }
                 in.close();
-                resultArea.setText(response.toString());
+                
                 try { 
                     String json = response.toString();
                     ObjectMapper objMap = new ObjectMapper();
@@ -82,14 +80,16 @@ public class WeatherApp extends JFrame {
                     feeltemp = rtNd.get("main").get("feels_like").asDouble();
                     temp-=273.5; feeltemp-=273.5;
                     weatherDescription = rtNd.get("weather").get(0).get("description").asText();
-            
-                    System.out.printf("City:%s\nWeather:%s\nTemp:%.1f°C\nFeels like:%.1f°C\n", city,weatherDescription,temp,feeltemp);
+                    String resultText = "City:%s\nWeather:%s\nTemp:%.1f°C\nFeels like:%.1f°C\n";
+                    String formResultText = String.format(resultText, city,weatherDescription,temp,feeltemp);
+                    resultArea.setText(formResultText);
+                    
 
                 }
                 catch (JsonProcessingException e) {
                     e.printStackTrace();
                 }
-                //System.out.println(response.toString());
+
                 
 
             } else {
