@@ -32,6 +32,8 @@ public class WeatherApp extends JFrame {
         cityField = new JTextField(20);
         fetchButton = new JButton("Fetch Weather");
         resultArea = new JTextArea();
+        resultArea.setEnabled(false);
+        resultArea.setDisabledTextColor(Color.BLACK);
 
         JPanel inputPanel = new JPanel();
         inputPanel.add(cityField);
@@ -78,7 +80,7 @@ public class WeatherApp extends JFrame {
                     city = rtNd.get("name").asText();
                     temp = rtNd.get("main").get("temp").asDouble();
                     feeltemp = rtNd.get("main").get("feels_like").asDouble();
-                    temp-=273.5; feeltemp-=273.5;
+                    temp-=273.5; feeltemp-=273.5; 
                     weatherDescription = rtNd.get("weather").get(0).get("description").asText();
                     String resultText = "City:%s\nWeather:%s\nTemp:%.1f°C\nFeels like:%.1f°C\n";
                     String formResultText = String.format(resultText, city,weatherDescription,temp,feeltemp);
