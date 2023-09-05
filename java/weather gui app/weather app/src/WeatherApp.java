@@ -136,7 +136,7 @@ public class WeatherApp extends JFrame {
                         windDir = "NW";
                     }
                     //result
-                    String resultText = "GEOGRAPHICAL INFO\nCountry:%s\nCity: %s\nLongitude:%.4f\nLatitude:%.4f\n-------------------------\nWEATHER INFO\nWeather:%s\nTemp:%.1f°C\nFeels like:%.1f°C\nMinimum temperature:%.1f°C\nMaximum temperature:%.1f°C\n-------------------------\nWIND INFO\nWind speed:%.1fm/s\nWind direction:%s\n-------------------------\nATMOSPHERIC INFO\nPressure:%dhPa\nHumidity%d%%\nVisibilty:%dm\n";
+                    String resultText = "GEOGRAPHICAL INFO\nCountry:%s\nCity: %s\nLongitude:%.4f\nLatitude:%.4f\n-------------------------\nWEATHER INFO\nWeather:%s\nTemp:%.1f°C\nFeels like:%.1f°C\nMinimum temperature:%.1f°C\nMaximum temperature:%.1f°C\n-------------------------\nWIND INFO\nWind speed:%.1fm/s\nWind direction:%s\n-------------------------\nATMOSPHERIC INFO\nPressure:%dhPa\nHumidity:%d%%\nVisibilty:%dm\n";
                     String formResultText = String.format(resultText,country,city,lon,lat,weatherDescription,temp,tempFeel,tempMin,tempMax,windSpeed,windDir,pressure,humidity,visibility);
                     resultArea.setText(formResultText);
                     
