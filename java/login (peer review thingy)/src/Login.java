@@ -48,11 +48,13 @@ public class Login {
         domain = obj.nextLine(); //inputting the domain name
         if(fname.length() < 1 || lname.length() < 1){ //checking if user actually entered anything into the first/last name prompts
             print("Error! First or Last name is missing!\nExiting program...");
+            obj.close(); //closing the Scanner object
             return; //exiting the program
         }
         email = generateEmail(fname, lname, domain); //calling generateEmail method
         usrname = generateUsername(fname, lname);    //calling generateUsername method
         print(email); //printing the email
         print(usrname); //printing the username
+        obj.close(); //closing the Scanner object
     }
 }
