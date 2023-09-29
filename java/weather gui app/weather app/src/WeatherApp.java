@@ -74,10 +74,11 @@ public class WeatherApp extends JFrame {
         }
         return windDir;
     }
-
+    private Label inputLabel;
     private JTextField cityField;
     private JButton fetchButton;
     private JTextArea resultArea;
+
 
     private Panel dataPanel;
     
@@ -135,14 +136,17 @@ public class WeatherApp extends JFrame {
         //init
         setTitle("Weather App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(800, 600);
         setLayout(new BorderLayout());
         Font sectFont = new Font("Arial", Font.BOLD, 16);
 
         //input panel
+        inputLabel = new Label("Enter City:");
+        inputLabel.setFont(sectFont);
         cityField = new JTextField(20);
         fetchButton = new JButton("Fetch Weather");
         JPanel inputPanel = new JPanel();
+        inputPanel.add(inputLabel);
         inputPanel.add(cityField);
         inputPanel.add(fetchButton);
         add(inputPanel, BorderLayout.NORTH);
@@ -194,7 +198,7 @@ public class WeatherApp extends JFrame {
 
         //weather info panel - data and labels
         weaPanel = new Panel(new GridLayout(5,2));
-
+        
 
         weaLabel = new Label("Weather:");
         weaData = new Label("");
@@ -225,6 +229,7 @@ public class WeatherApp extends JFrame {
         weaPanel.add(maxTempData);
 
        // dataPanel.add(new JSeparator(SwingConstants.HORIZONTAL));
+        weaPanel.setBackground(Color.LIGHT_GRAY);
         dataPanel.add(weaPanel);
         
         
@@ -282,7 +287,7 @@ public class WeatherApp extends JFrame {
         atmoPanel.add(cloudLabel);
         atmoPanel.add(cloudData);
         
-        
+        atmoPanel.setBackground(Color.LIGHT_GRAY);
         dataPanel.add(atmoPanel);
         
         //dataPanel.add(new JSeparator(SwingConstants.HORIZONTAL));
