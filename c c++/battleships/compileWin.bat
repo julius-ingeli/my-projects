@@ -1,0 +1,6 @@
+@echo off
+title Compilation...
+echo Compiling...
+gcc -g main.c -o game
+echo Compilation completed successfully.
+pause
