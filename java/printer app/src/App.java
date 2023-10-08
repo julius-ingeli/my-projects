@@ -429,7 +429,7 @@ public class App {
         StringBuilder sb = new StringBuilder(s);
         for(int i = rows-1; i>-1;i--){
              sb.setCharAt(i,ch);
-             TimeUnit.SECONDS.sleep(3);
+             TimeUnit.SECONDS.sleep(1);
              out.println(sb);
         }
         obj.close();
@@ -462,6 +462,7 @@ public class App {
     static void multiply1000(int n){System.out.printf("%d",n*1000);}
     
     static void calculate(int n1, int n2, String s){
+        Scanner numin = new Scanner(System.in);
         switch (s){
             case "sum":
                 System.out.printf("The result is %d.",n1+n2);
@@ -484,7 +485,8 @@ public class App {
         Random random = new Random();
         Scanner choice = new Scanner(System.in);
         print("Select which app to use:\n1. Printer app\n2. Comparer App\n3. RNG\n4. Calculator\n5. Lucky 7\n6. Age app\n7. Name hangman\n8. Furniture app\n9. Dice thrower\n");
-        print("10. Dice thrower 2\n11. Memory game\n12. Multiplication\n13. print\n14. area\n");
+        print("10. Dice thrower 2\n11. Memory game\n12. Multiplication\n13. print\n14. area\n15. sorter\n16. calculator");
+        print("DEMOS:\n17. Print demo\n18. Array demo\n19. Array test");
         while(true){
             int c = choice.nextInt();
             switch(c){
@@ -583,20 +585,30 @@ public class App {
                     inp.close();
                     System.exit(0);
                 case 16:
-                    calculate(1, 2, "sum");
-                    choice.close();                    
+                    Scanner calcin = new Scanner(System.in);
+                    Scanner opin = new Scanner(System.in);
+                    int num1, num2;
+                    String operator;
+                    print("input number:");
+                    num1 = calcin.nextInt();
+                    print("input number:");
+                    num2 = calcin.nextInt();
+                    print("select operation (sum, subtraction, multiplication):");
+                    operator = opin.nextLine();
+                    calculate(num1,num2,operator);
+                    choice.close();calcin.close();opin.close();                    
                     System.exit(0);
-                /*
-                case 13:
+                
+                case 17:
                     printDemo();
                     choice.close();
                     System.exit(0);
-                case 14:
+                case 18:
                     arrDemo();
                     choice.close();
                     System.exit(0);
-                */
-                case 17:
+                
+                case 19:
                     arrTest(random);
                     choice.close();
                     System.exit(0);
